@@ -85,6 +85,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
       </div>
     </div>
 
-    <script src="/js/app.js"></script>
+    <!-- <script src="./js/app.js"></script> -->
   </body>
 </html>

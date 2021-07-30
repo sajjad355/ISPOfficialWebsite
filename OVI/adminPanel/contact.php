@@ -14,17 +14,15 @@
   }
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="widlabel=device-widlabel, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        ISP
+    ISP
     </title>
     <link rel="shortcut icon" href="/images/logo-mb.png" type="image/png">
     <!-- GOOGLE FONT -->
@@ -42,7 +40,8 @@
     <!-- SIDEBAR -->
     <div class="sidebar">
         <div class="sidebar-logo">
-            <a href="#"><img src="./img/download.png" alt="Comapny logo"></a>
+        <a href="#"><img src="./img/download.png" alt="Comapny logo"></a>
+
             <div class="sidebar-close" id="sidebar-close">
                 <i class='bx bx-left-arrow-alt'></i>
             </div>
@@ -51,30 +50,47 @@
             <div class="sidebar-user-info">
                 <img src="./img/user.png" alt="User picture" class="profile-image">
                 <div class="sidebar-user-name">
-                    OVI
+                    Ovi
                 </div>
             </div>
             <button class="btn btn-outline">
-            <a href="logout.php"> <i class='bx bx-log-out bx-flip-horizontal'></i></a>
+                <a href="logout.php"><i class='bx bx-log-out bx-flip-horizontal'></i></a>
             </button>
         </div>
         <!-- SIDEBAR MENU -->
         <ul class="sidebar-menu">
             <li>
-                <a href="dashboard.php" class="active" style="text-decoration:none">
+                <a href="dashboard.php">
                     <i class='bx bx-home'></i>
-                    <span>Complain Dashboard</span>
+                    <span>dashboard</span>
                 </a>
             </li>
+            
+            
+            
+           
             <li>
                 <a href="contact.php" class="active">
-                    <i class='bx bx-mail-send'></i>
+                    <i class='bx bx-chat'></i>
                     <span>Message List</span>
                 </a>
             </li>
             
-            
-         
+            <li class="sidebar-submenu">
+                <a href="#" class="sidebar-menu-dropdown">
+                    <i class='bx bx-cog'></i>
+                    <span>settings</span>
+                    <div class="dropdown-icon"></div>
+                </a>
+                <ul class="sidebar-menu sidebar-menu-dropdown-content">
+                    <li>
+                        <a href="#" class="darkmode-toggle" id="darkmode-toggle">
+                            darkmode
+                            <span class="darkmode-switch"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
         </ul>
         <!-- END SIDEBAR MENU -->
     </div>
@@ -87,12 +103,15 @@
                 <i class='bx bx-menu-alt-right'></i>
             </div>
             <div class="main-title">
-            Message List
+                Complain dashboard
             </div>
         </div>
         <div class="main-content">
             
+
             <div class="row">
+                
+                
                 
             <?php
    
@@ -163,8 +182,7 @@
                 ?>
 
 
-                
-                
+
             </div>
         </div>
     </div>
@@ -176,7 +194,7 @@
     <!-- APEX CHART -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <!-- APP JS -->
-    <script src="./js/app.js"></script>
+    <script src="./js/apps.js"></script>
 
 </body>
 

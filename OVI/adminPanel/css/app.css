@@ -37,25 +37,10 @@ body {
     position: relative;
 }
 
-a:hover{
-    
-    /* color: blue; */
-    
+a {
     text-decoration: none;
-   
+    color: unset;
     display: inline-block;
-}
-
-.sidebar-menu a:hover{
-    text-decoration: none;
-    background: #16c9f6!important;
-    color:white!important;
-    
-}
-
-.sidebar-menu a{
-    text-decoration: none!important;
-
 }
 
 .sidebar {
@@ -312,10 +297,6 @@ a:hover{
 
 .box-hover:hover {
     border-color: var(--main-color);
-}
-
-.btn-outline a:hover{
-  background: white!important;
 }
 
 .counter-title {
