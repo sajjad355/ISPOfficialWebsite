@@ -53,9 +53,9 @@
           $currDate=$dt->format('Y-m-d H:i:s');
 
           $sql = "INSERT INTO complain (Name,MobileNo,Date,AnyServiceProblem,AnyServiceProblemDesc,InternetBrowserProblem,FacebookBufferProblem,LineDropTime,PackageWiseDownloadOk
-                ,HappyWithService,PubgFreefirePing,FtpServerProblem,CommentAboutCompany)
+                ,HappyWithService,PubgFreefirePing,FtpServerProblem,AndroidIosAppProblem,CommentAboutCompany)
               VALUES ('$name','$contactNumber','$currDate','$problem','$messageProblem','$internetBrowingProblem','$facebookBuffer',
-              '$dropLineTime','$packageWiseSpeed','$messageSatisfy','$pubg','$ftp','$messageComment');";
+              '$dropLineTime','$packageWiseSpeed','$messageSatisfy','$pubg','$ftp','$YoutubeBrowingProblem','$messageComment');";
           mysqli_query($conn, $sql);
          
          echo "<script> alert(`Succesfully Submitted Your Complain!`) </script>";
@@ -161,7 +161,7 @@
                             <label>২। &nbsp;PUBG/FreeFire এ কি  PING অনেক বেশি ?</label><br/>
                         </div>
                         <input type="radio" name="pubg" value="হ্যাঁ"/> &nbsp হ্যাঁ<br/>
-                        <input type="radio" name="pubg" value="না<"/> &nbsp না<br/>                
+                        <input type="radio" name="pubg" value="না"/> &nbsp না<br/>                
                         </div>
 
 
@@ -181,7 +181,7 @@
                             <label>৩।&nbsp; ইন্টারনেট ব্রাউজ করতে কোনো সমস্যা হয়, ইন্টারনেট সাইট গুলো ওপেন হতে অনেক দেরি হয়?</label><br/>
                         </div>
                         <input type="radio" name="internetBrowingProblem" value="হ্যাঁ"/> &nbsp হ্যাঁ<br/>
-                        <input type="radio" name="internetBrowingProblem" value="না<"/> &nbsp না<br/>
+                        <input type="radio" name="internetBrowingProblem" value="না"/> &nbsp না<br/>
                             <br/> <br>       
                         </div>
 
