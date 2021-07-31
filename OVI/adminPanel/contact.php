@@ -3,7 +3,7 @@
   include "includes/db_connect.php";
   if(isset($_SESSION['uname']))
   {
-    $commentsQuery = "SELECT * from contact ORDER BY TimeStamp";
+    $commentsQuery = "SELECT * from contact ORDER BY TimeStamp DESC";
     $resultComments = mysqli_query($conn, $commentsQuery);
     
 

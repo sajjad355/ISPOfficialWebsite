@@ -1,3 +1,48 @@
+<?php
+     include "includes/db_connect.php";
+     $sql="";
+     $name=$phn=$mail=$currDate=$message="";
+
+     if($_SERVER["REQUEST_METHOD"] == "POST"){
+          if(!empty($_POST['name'])){
+            $name = mysqli_real_escape_string($conn,$_POST['name']);
+          }
+          if(!empty($_POST['phn'])){
+            $phn = mysqli_real_escape_string($conn,$_POST['phn']);
+          }
+          if(!empty($_POST['mail'])){
+            $mail = mysqli_real_escape_string($conn,$_POST['mail']);
+          }
+         
+
+
+          if(!empty($_POST['message'])){
+            $message = mysqli_real_escape_string($conn,$_POST['message']);
+          }
+         
+
+          $dt = new DateTime("now", new DateTimeZone('Asia/Dhaka'));
+         
+          $currDate=$dt->format('Y-m-d H:i:s');
+
+          $sql = "INSERT INTO contact (Name,MobileNumber,Email,Message,TimeStamp)
+              VALUES ('$name','$phn','$mail','$message','$currDate');";
+          mysqli_query($conn, $sql);
+         
+         echo "<script> alert(`Succesfully Send Your Message!`) </script>";
+         $sql="";
+
+         $name=$phn=$mail=$currDate=$message="";
+          $conn->close();
+
+
+
+     }
+
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,7 +85,7 @@
               <a class="nav-link" href="#">Instruction</a>
           </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="complain.html">Complain Corner</a>
+                    <a class="nav-link" href="complain.php">Complain Corner</a>
                 </li>
               </ul>
 
@@ -471,20 +516,20 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-8 col-10 offset-lg-2 offset-md-2 col-1">
-            <form action="/action_page.php">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Enter Your Name" id="username" required autocomplete="off">
+                <input type="text" class="form-control" placeholder="Enter Your Name" id="username" name="name" required autocomplete="off">
               </div>
 
               <div class="form-group">
-                <input type="email" class="form-control" placeholder="Enter email" id="email" required autocomplete="off">
+                <input type="email" class="form-control" placeholder="Enter email" id="email" name="mail" required autocomplete="off">
               </div>
 
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Enter Mobile Number" id="mobileNumber" required autocomplete="off">
+                <input type="text" class="form-control" placeholder="Enter Mobile Number" id="mobileNumber" name="phn" required autocomplete="off">
               </div>
               <div class="form-group">
-                <textarea class="form-control" rows="4" id="comment"  placeholder="Enter Your Message"></textarea>
+                <textarea class="form-control" rows="4" id="comment"  name="message" placeholder="Enter Your Message"></textarea>
               </div>
                <div class="d-flex justify-content-center form-button " >
                 <button type="submit" class="btn btn-primary">Submit</button>

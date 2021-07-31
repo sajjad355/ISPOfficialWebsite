@@ -1,3 +1,76 @@
+<?php
+     include "includes/db_connect.php";
+     $sql="";
+     $name=$contactNumber=$problem=$pubg=$messageProblem=$internetBrowingProblem=$facebookBuffer=$YoutubeBrowingProblem=$dropLineTime=$ftp=$messageSatisfy=$messageComment=$packageWiseSpeed="";
+
+     if($_SERVER["REQUEST_METHOD"] == "POST"){
+          if(!empty($_POST['name'])){
+            $name = mysqli_real_escape_string($conn,$_POST['name']);
+          }
+          if(!empty($_POST['contactNumber'])){
+            $contactNumber = mysqli_real_escape_string($conn,$_POST['contactNumber']);
+          }
+          if(!empty($_POST['problem'])){
+            $problem = mysqli_real_escape_string($conn,$_POST['problem']);
+          }
+          if(!empty($_POST['pubg'])){
+            $pubg = mysqli_real_escape_string($conn,$_POST['pubg']);
+          }
+
+
+          if(!empty($_POST['messageProblem'])){
+            $messageProblem = mysqli_real_escape_string($conn,$_POST['messageProblem']);
+          }
+          if(!empty($_POST['internetBrowingProblem'])){
+            $internetBrowingProblem = mysqli_real_escape_string($conn,$_POST['internetBrowingProblem']);
+          }
+          if(!empty($_POST['facebookBuffer'])){
+            $facebookBuffer = mysqli_real_escape_string($conn,$_POST['facebookBuffer']);
+          }
+          if(!empty($_POST['YoutubeBrowingProblem'])){
+            $YoutubeBrowingProblem = mysqli_real_escape_string($conn,$_POST['YoutubeBrowingProblem']);
+          }
+
+
+
+          if(!empty($_POST['dropLineTime'])){
+            $dropLineTime = mysqli_real_escape_string($conn,$_POST['dropLineTime']);
+          }
+          if(!empty($_POST['ftp'])){
+            $ftp = mysqli_real_escape_string($conn,$_POST['ftp']);
+          }
+          if(!empty($_POST['messageSatisfy'])){
+            $messageSatisfy = mysqli_real_escape_string($conn,$_POST['messageSatisfy']);
+          }
+          if(!empty($_POST['messageComment'])){
+            $messageComment = mysqli_real_escape_string($conn,$_POST['messageComment']);
+          }
+          if(!empty($_POST['packageWiseSpeed'])){
+            $packageWiseSpeed = mysqli_real_escape_string($conn,$_POST['packageWiseSpeed']);
+          }
+          $dt = new DateTime("now", new DateTimeZone('Asia/Dhaka'));
+         
+          $currDate=$dt->format('Y-m-d H:i:s');
+
+          $sql = "INSERT INTO complain (Name,MobileNo,Date,AnyServiceProblem,AnyServiceProblemDesc,InternetBrowserProblem,FacebookBufferProblem,LineDropTime,PackageWiseDownloadOk
+                ,HappyWithService,PubgFreefirePing,FtpServerProblem,CommentAboutCompany)
+              VALUES ('$name','$contactNumber','$currDate','$problem','$messageProblem','$internetBrowingProblem','$facebookBuffer',
+              '$dropLineTime','$packageWiseSpeed','$messageSatisfy','$pubg','$ftp','$messageComment');";
+          mysqli_query($conn, $sql);
+         
+         echo "<script> alert(`Succesfully Submitted Your Complain!`) </script>";
+         $sql="";
+        $name=$contactNumber=$problem=$pubg=$messageProblem=$internetBrowingProblem=$facebookBuffer=$YoutubeBrowingProblem=$dropLineTime=$ftp=$messageSatisfy=$messageComment=$packageWiseSpeed="";
+
+        
+          $conn->close();
+
+
+
+     }
+
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +95,7 @@
               <ul class="navbar-nav ml-auto text-uppercase">
 
                 <li class="nav-item">
-                  <a class="nav-link" href="index.html">BACK TO HOMEPAGE</a>
+                  <a class="nav-link" href="index.php">BACK TO HOMEPAGE</a>
               </li>
 
               </ul>
@@ -55,7 +128,7 @@
                 <div class="col-lg-12">
                     <h3>Start Complaining...</h3>
                     <br><br>
-                    <form class="contact_us_form row"  method="post" >
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" class="contact_us_form row"  method="POST" >
                         <div class="form-group col-lg-6">
                                                                আপনার নাম
                             <br/>
@@ -77,8 +150,8 @@
                             <br><br>
                             <label>১। &nbsp; আমাদের সার্ভিস এ কোনো সমস্যা পাচ্ছেন ?</label><br/>
                         </div>
-                        <input type="radio" name="problem" value="Yes"/> &nbsp হ্যাঁ<br/>
-                        <input type="radio" name="problem" value="No"/> &nbsp না<br/>
+                        <input type="radio" name="problem" value="হ্যাঁ"/> &nbsp হ্যাঁ<br/>
+                        <input type="radio" name="problem" value="না"/> &nbsp না<br/>
                         </div>
 
 
@@ -87,8 +160,8 @@
                             <br><br>
                             <label>২। &nbsp;PUBG/FreeFire এ কি  PING অনেক বেশি ?</label><br/>
                         </div>
-                        <input type="radio" name="pubg" value="Yes"/> &nbsp হ্যাঁ<br/>
-                        <input type="radio" name="pubg" value="No"/> &nbsp না<br/>                
+                        <input type="radio" name="pubg" value="হ্যাঁ"/> &nbsp হ্যাঁ<br/>
+                        <input type="radio" name="pubg" value="না<"/> &nbsp না<br/>                
                         </div>
 
 
@@ -107,8 +180,8 @@
                             <br>
                             <label>৩।&nbsp; ইন্টারনেট ব্রাউজ করতে কোনো সমস্যা হয়, ইন্টারনেট সাইট গুলো ওপেন হতে অনেক দেরি হয়?</label><br/>
                         </div>
-                        <input type="radio" name="internetBrowingProblem" value="Yes"/> &nbsp হ্যাঁ<br/>
-                        <input type="radio" name="internetBrowingProblem" value="No"/> &nbsp না<br/>
+                        <input type="radio" name="internetBrowingProblem" value="হ্যাঁ"/> &nbsp হ্যাঁ<br/>
+                        <input type="radio" name="internetBrowingProblem" value="না<"/> &nbsp না<br/>
                             <br/> <br>       
                         </div>
 
@@ -117,8 +190,8 @@
                             <div class="col-lg-12">
                                 <label>৪। &nbsp; ফেইসবুক এ ভিডিও চালালে কি বাফার করে?</label><br/>
                             </div>
-                            <input type="radio" name="facebookBuffer" value="Yes"/> &nbsp হ্যাঁ<br/>
-                            <input type="radio" name="facebookBuffer" value="No"/> &nbsp না<br/>
+                            <input type="radio" name="facebookBuffer" value="হ্যাঁ"/> &nbsp হ্যাঁ<br/>
+                            <input type="radio" name="facebookBuffer" value="না"/> &nbsp না<br/>
                                 <br/><br>
                         </div>
 
@@ -127,8 +200,8 @@
                         <div class="col-lg-12">
                             <label>৫। &nbsp; ইউটিউব ব্রাউজ এবং ডাউনলোড এ কোনো সমস্যা আছে ?</label><br/>
                         </div>
-                        <input type="radio" name="YoutubeBrowingProblem" value="Yes"/> &nbsp হ্যাঁ<br/>
-                        <input type="radio" name="YoutubeBrowingProblem" value="No"/> &nbsp না<br/>
+                        <input type="radio" name="YoutubeBrowingProblem" value="হ্যাঁ"/> &nbsp হ্যাঁ<br/>
+                        <input type="radio" name="YoutubeBrowingProblem" value="না"/> &nbsp না<br/>
                             <br/><br/>
                         </div>
 
@@ -149,8 +222,8 @@
                         <div class="col-lg-12">
                             <label>৭। &nbsp; প্যাকেজ ওয়াইজ ডাউনলোড আপলোড স্পিড কি ঠিক আছে?</label><br/>
                         </div>
-                        <input type="radio" name="packageWiseSpeed" value="Yes"/> &nbsp হ্যাঁ<br/>
-                        <input type="radio" name="packageWiseSpeed" value="No"/> &nbsp না<br/>
+                        <input type="radio" name="packageWiseSpeed" value="হ্যাঁ"/> &nbsp হ্যাঁ<br/>
+                        <input type="radio" name="packageWiseSpeed" value="না"/> &nbsp না<br/>
                             <br/><br>
                         </div>
 
@@ -159,8 +232,8 @@
                         <div class="col-lg-12">
                             <label>৮। &nbsp; FTP সার্ভার ব্যাবহারে কোনো ঝামেলা আছে?</label><br/>
                         </div>
-                        <input type="radio" name="ftp" value="Yes"/> &nbsp হ্যাঁ<br/>
-                        <input type="radio" name="ftp" value="No"/> &nbsp না<br/>
+                        <input type="radio" name="ftp" value="হ্যাঁ"/> &nbsp হ্যাঁ<br/>
+                        <input type="radio" name="ftp" value="না"/> &nbsp না<br/>
                             <br/><br/>
                         </div>
 

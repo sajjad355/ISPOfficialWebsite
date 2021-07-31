@@ -4,7 +4,7 @@
   $commentsQuery =$resultComments="";
   if(isset($_SESSION['uname']))
   {
-    $commentsQuery = "SELECT * from complain ORDER BY Date";
+    $commentsQuery = "SELECT * from complain ORDER BY Date DESC";
     $resultComments = mysqli_query($conn, $commentsQuery);
     
 
